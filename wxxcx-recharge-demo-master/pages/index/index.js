@@ -2,7 +2,10 @@ const app = getApp()
 
 Page({
   data: {
+    goodsName:"",
+    goodsPrice:"",
     useHistory: [],
+    phoneNumber:"",
     show: false,//是否显示常用信息
     isFocu: false,//是否聚焦
     busniessList: ['美国', '中国', '巴西', '日本'],
@@ -140,9 +143,6 @@ Page({
       region:'',
     })
   },
-  aaaa(){
-
-  },
   getInputInfo(e) {
     var that = this;
     var info = e.detail.value;
@@ -169,6 +169,7 @@ Page({
       index: e.detail.value
     })
   },
+
   getToastFocus: function(e) {
     var that = this;
     that.setData({

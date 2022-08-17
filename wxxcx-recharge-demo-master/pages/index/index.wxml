@@ -14,9 +14,10 @@
   </picker>
   <!--手机号-->
   <view class='user-info-beta'>
-    <input class='user-info-input' type='number' class='ser-info-phone' focus='{{isFocu}}' placeholder-class="user-info-placeholder" placeholder='请输入手机号码' maxlength='11' bindinput='aaaa'  value="{{value}}"></input>
+    <input class='user-info-input' type='number' class='ser-info-phone' focus='{{isFocu}}' placeholder-class="user-info-placeholder" placeholder='请输入手机号码' maxlength='11' bindinput='getInputInfo' data-params="phoneNumber" value="{{phoneNumber}}"></input>
     <view wx:if="{{region}}" class='user-region-text'>{{region}}</view>
   </view>
+
   <!--清除按钮-->
   <image bindtap='clearValue' wx:if="{{value.length > 0}}" class='user-info-clear' src='../../image/trash.png' ></image>
 </view>
