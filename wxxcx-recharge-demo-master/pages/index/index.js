@@ -12,8 +12,8 @@ Page({
     region:'',//号码所属地区
     goodList: [{
       icon: 'https://file.gc.com.cn/backServerImage//mpic/20190207/20190207114852700356.png',
-      title: '5元',
-      price: '88.8',
+      title: '10元',
+      price: '99',
       goodid: 3
     }, {
       icon: '',
@@ -107,13 +107,41 @@ Page({
   chooseGoods(e) {
     var goodid = e.currentTarget.dataset.goodsid;
     var id = e.currentTarget.id;
+    console.log(e.detail.value)
     console.log(`you choose id is : ${id} | you choose goods id is : ${goodid}`);
+    wx.request({
+      url: 'http://localhost:8081/integralExchange/fulu/fuluOrderDirectAdd',
+      data: {
+        chargePhone: '18500865675'
+      },
+      // 请求的方法
+      method: 'POST', // 或 ‘POST’
+  	  // 请求成功时的处理
+      success: function (res) {
+        // 一般在这一打印下看看是否拿到数据
+        console.log(res.data)
+        if (res.statusCode == 200) {
+          
+        }
+      },
+      // 请求失败时的一些处理
+      fail: function () {
+      	wx.showToast({
+            icon: "none",
+            mask: true,
+          	title: "接口调用失败，请稍后再试。",
+         });
+      }
+    })
   },
   clearValue(){
     this.setData({
       value:"",
       region:'',
     })
+  },
+  aaaa(){
+
   },
   getInputInfo(e) {
     var that = this;
@@ -147,10 +175,5 @@ Page({
       show: true
     })
   },
-  getToastBlur: function(e) {
-    var that = this;
-    that.setData({
-      show: false
-    })
-  },
+  
 })
